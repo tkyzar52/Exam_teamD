@@ -19,7 +19,7 @@ public class TestListSubject implements Serializable{
 	public void setStudentNo(String studentNo) {this.studentNo = studentNo;}
 	
 	public String getStudentName() { return studentName;}
-	public void setStudentName(String studentName) { return studentName = studentName;}
+	public void setStudentName(String studentName) { this.studentName = studentName;}
 	
 	public String getClassNum() { return classNum;}
 	public void setClassNum(String classNum) {this.classNum = classNum;}

@@ -10,3 +10,4 @@ public class SubjectCreateAction extends Action {
         req.getRequestDispatcher("subject_create.jsp").forward(req, res);
     }
 }
+//コミット

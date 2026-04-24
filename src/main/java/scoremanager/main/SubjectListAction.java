@@ -24,3 +24,4 @@ public class SubjectListAction extends Action {
         req.getRequestDispatcher("subject_list.jsp").forward(req, res);
     }
 }
+//コミット

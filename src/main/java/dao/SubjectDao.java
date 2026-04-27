@@ -108,4 +108,28 @@ public class SubjectDao extends Dao {
         }
         return count > 0;
     }
-}//comment
+    public boolean update(Subject subject) throws Exception {
+        Connection connection = getConnection();
+        PreparedStatement statement = null;
+        int count = 0;
+
+        try {
+            statement = connection.prepareStatement(
+                "update subject set name=? where cd=? and school_cd=?"
+            );
+            statement.setString(1, subject.getName());
+            statement.setString(2, subject.getCd());
+            statement.setString(3, subject.getSchool().getCd());
+
+            count = statement.executeUpdate();
+
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (statement != null) statement.close();
+            if (connection != null) connection.close();
+        }
+
+        return count > 0;
+    }
+}

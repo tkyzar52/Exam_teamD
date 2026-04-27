@@ -7,12 +7,8 @@
         <section class="me-4">
             <h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">科目管理</h2>
 
-            <div class="mb-3">
+            <div class="mb-3 text-end">
                 <a href="SubjectCreate.action">新規登録</a>
-            </div>
-
-            <div class="mb-2">
-                科目数: ${subjects.size()}件
             </div>
 
             <table class="table table-hover">

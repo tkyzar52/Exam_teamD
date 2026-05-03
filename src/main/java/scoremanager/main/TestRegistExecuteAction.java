@@ -22,13 +22,14 @@ public class TestRegistExecuteAction extends Action {
         HttpSession session = req.getSession();
         Teacher teacher = (Teacher) session.getAttribute("user");
 
-        String subjectCd = req.getParameter("subject_cd");
-        int testNo = Integer.parseInt(req.getParameter("test_no"));
+        String subjectCd = req.getParameter("f3");
+        int testNo = Integer.parseInt(req.getParameter("f4"));
         
         String[] studentNoSet = req.getParameterValues("student_no_set");
 
         SubjectDao subDao = new SubjectDao();
         Subject subject = subDao.get(subjectCd, teacher.getSchool());
+        
         
         StudentDao stuDao = new StudentDao();
         List<Test> testList = new ArrayList<>();
@@ -43,7 +44,9 @@ public class TestRegistExecuteAction extends Action {
                     if (point >= 0 && point <= 100) {
                         Student student = stuDao.get(no);
                         if (student != null) {
+                        	student.setSchool(teacher.getSchool()); 
                             Test test = new Test();
+                            
                             test.setStudent(student);
                             test.setSubject(subject);
                             test.setSchool(teacher.getSchool());
@@ -59,6 +62,7 @@ public class TestRegistExecuteAction extends Action {
 
         TestDao tDao = new TestDao();
         tDao.save(testList);
+        
 
         req.getRequestDispatcher("test_regist_done.jsp").forward(req, res);
     }

@@ -177,7 +177,7 @@ public class TestDao extends Dao {
         }
     }
     
-    //fix
+    
     
     public boolean delete(Subject subject) throws Exception {
         Connection connection = getConnection();

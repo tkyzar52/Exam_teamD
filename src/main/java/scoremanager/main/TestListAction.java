@@ -50,7 +50,11 @@ public class TestListAction extends Action {
                 String classNum = req.getParameter("f2");
                 String subjectCd = req.getParameter("f3");
                 Subject subject = sDao.get(subjectCd, teacher.getSchool());
-
+                
+                req.setAttribute("f1", entYear);
+                req.setAttribute("f2", classNum);
+                req.setAttribute("f3", subjectCd);
+                
                 List<Test> tests = tDao.filter(entYear, classNum, subject, 0, teacher.getSchool());
                 
                 Map<String, Student> studentMap = new LinkedHashMap<>();
@@ -67,7 +71,7 @@ public class TestListAction extends Action {
                         scoreMap.get(sNo).put(testNumStr, t.getPoint());
                     }
                 }
-
+                
                 req.setAttribute("student_map", studentMap);
                 req.setAttribute("score_map", scoreMap);
                 req.setAttribute("subject", subject);
@@ -76,8 +80,12 @@ public class TestListAction extends Action {
 
             } else if (f.equals("st")) {
                 String studentNo = req.getParameter("f4");
+                
+                req.setAttribute("f4", studentNo);
+                
                 StudentDao stuDao = new StudentDao();
                 Student student = stuDao.get(studentNo);
+                
                 
                 if (student != null) {
                     List<Test> tests = tDao.filter(student);

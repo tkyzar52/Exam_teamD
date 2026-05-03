@@ -7,12 +7,16 @@
         <section class="me-4">
             <h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">成績参照</h2>
             
-            <div class="mb-5">
-                <p class="fw-bold border-bottom pb-2">科目情報から探す</p>
+            <div class="mb-4 px-2">
+               
                 <form action="TestList.action" method="get">
                     <input type="hidden" name="f" value="sj">
-                    <div class="row align-items-end">
-                        <div class="col-3">
+                    <div class="border rounded bg-white p-4 mb-4 shadow-sm">
+                     <div class="row mb-3 align-items-center">
+                        <div class="col-md-2">
+                        	<label class="form-label">科目情報</label>
+                        </div>
+                        <div class="col-2">
                             <label class="form-label">入学年度</label>
                             <select class="form-select" name="f1" required>
                                 <option value="">--------</option>
@@ -21,7 +25,7 @@
                                 </c:forEach>
                             </select>
                         </div>
-                        <div class="col-3">
+                        <div class="col-2">
                             <label class="form-label">クラス</label>
                             <select class="form-select" name="f2" required>
                                 <option value="">--------</option>
@@ -40,28 +44,42 @@
                             </select>
                         </div>
                         <div class="col-2">
-                            <button class="btn btn-secondary w-100" type="submit">表示</button>
+                            <button class="btn btn-secondary w-80" type="submit">検索</button>
                         </div>
                     </div>
+                    
+                    <hr class="my-4">
+
+					<div class="row align-items-end">
                 </form>
             </div>
 
             <div>
-                <p class="fw-bold border-bottom pb-2">学生情報から探す</p>
+                
                 <form action="TestList.action" method="get">
-                    <input type="hidden" name="f" value="st">
-                    <div class="row align-items-end">
-                        <div class="col-10">
+                    <input type="hidden" name="f" value="st"> 
+                    <div class="row align-items-center">
+                    	<div class="col-md-2">
+                        	<label class="form-label">学生情報</label>
+                        </div>
+                        <div class="col-5">
                             <label class="form-label">学生番号</label>
                             <input type="text" name="f4" class="form-control" 
                                    placeholder="学生番号を入力してください" maxlength="10" required>
                         </div>
                         <div class="col-2">
-                            <button class="btn btn-secondary w-100" type="submit">表示</button>
+                            <button class="btn btn-secondary w-80" type="submit">検索</button>
                         </div>
+		            	
                     </div>
                 </form>
             </div>
+            
         </section>
+        
+        <div class="small fw-bold" style="color:#0aa2c0;">
+		      科目情報を選択または学生情報を入力して検索ボタンをクリックしてください
+		</div>
+		    
     </c:param>
 </c:import>

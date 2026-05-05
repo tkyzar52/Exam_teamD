@@ -52,13 +52,15 @@
                 
             </form>
 
-            <c:if test="${tests != null}">
+			<c:if test="${tests != null}">
 	            <p class="mb-2">
 				    科目：${subject.name}（${f4}回）
 				</p>
                 <form action="TestRegistExecute.action" method="post">
-                    <input type="hidden" name="f3" value="${f3}">
-                    <input type="hidden" name="f4" value="${f4}">
+                    <input type="hidden" name="f1" value="${f1}">
+					<input type="hidden" name="f2" value="${f2}">
+					<input type="hidden" name="f3" value="${f3}">
+					<input type="hidden" name="f4" value="${f4}">
                     
                     <table class="table table-hover">
 					    <thead>
@@ -78,11 +80,16 @@
 					                <td>${test.student.no}</td>
 					                <td>${test.student.name}</td>
 					                <td>
-					                    <input type="number" name="point_${test.student.no}" 
-					                           value="${test.point >= 0 ? test.point : ''}" 
-					                           class="form-control" min="0" max="100" style="width: 100px;">
-					                    <input type="hidden" name="student_no_set" value="${test.student.no}">
-					                </td>
+									    <input type="text" name="point_${test.student.no}" 
+									           value="${test.point >= 0 ? test.point : ''}" 
+									           class="form-control" style="width: 100px;">
+									    <c:if test="${not empty errorMap[test.student.no]}">
+									        <div style="color: orange; font-size: 0.85em;">
+									            ${errorMap[test.student.no]}
+									        </div>
+									    </c:if>
+									    <input type="hidden" name="student_no_set" value="${test.student.no}">
+									</td>
 					            </tr>
 					        </c:forEach>
 					    </tbody>

@@ -85,40 +85,40 @@
             </div>
             
      
-            <div class="mb-3 ">
-                <p>氏名: ${student.name} (${student.no})</p>
-            </div>
-            
-			<c:if test="${not empty student_map}">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>科目名</th>
-                        <th>科目コード</th>
-                        <th>回数</th>
-                        <th>点数</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="test" items="${tests}">
-                        <tr>
-                            <td>${test.subject.name}</td>
-                            <td>${test.subject.cd}</td>
-                            <td>${test.no}</td>
-                            <td>${test.point}</td>
-                        </tr>
-                    </c:forEach>
-                   
-                </tbody>
-            </table>
-            </c:if>
-            
-           <c:if test="${empty student_map}">
+            <div class="mb-3">
+			    <c:if test="${not empty student}">
+			        <p>氏名: ${student.name} (${student.no})</p>
+			    </c:if>
+			</div>
+			
+			<c:if test="${not empty tests}">
+			    <table class="table table-hover">
+			        <thead>
+			            <tr>
+			                <th>科目名</th>
+			                <th>科目コード</th>
+			                <th>回数</th>
+			                <th>点数</th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			            <c:forEach var="test" items="${tests}">
+			                <tr>
+			                    <td>${test.subject.name}</td>
+			                    <td>${test.subject.cd}</td>
+			                    <td>${test.no}</td>
+			                    <td>${test.point}</td>
+			                </tr>
+			            </c:forEach>
+			        </tbody>
+			    </table>
+			</c:if>
+			
+			<c:if test="${empty tests && not empty param.f4}">
 			    <div class="text">
-			        学生情報が存在しませんでした
+			        成績情報が存在しませんでした
 			    </div>
 			</c:if>
-
             <div class="mt-4 mx-3">
                 <a href="TestList.action" class="btn btn-secondary">戻る</a>
             </div>

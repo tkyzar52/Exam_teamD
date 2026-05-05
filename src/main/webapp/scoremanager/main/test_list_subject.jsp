@@ -38,8 +38,9 @@
 									</option>
                                 </c:forEach>
                             </select>
+                            
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
                             <label class="form-label">科目</label>
                             <select class="form-select" name="f3" required>
                                 <option value="">--------</option>
@@ -118,6 +119,7 @@
 			        </tbody>
 			    </table>
 			</c:if>
+			
 			<c:if test="${empty student_map}">
 			    <div class="text">
 			        学生情報が存在しませんでした

@@ -46,14 +46,32 @@ public class TestListAction extends Action {
         if (f != null) {
             TestDao tDao = new TestDao();
             if (f.equals("sj")) {
-                int entYear = Integer.parseInt(req.getParameter("f1"));
+                String entYearStr =req.getParameter("f1");
                 String classNum = req.getParameter("f2");
                 String subjectCd = req.getParameter("f3");
-                Subject subject = sDao.get(subjectCd, teacher.getSchool());
                 
-                req.setAttribute("f1", entYear);
+                
+                req.setAttribute("f1", entYearStr);
                 req.setAttribute("f2", classNum);
                 req.setAttribute("f3", subjectCd);
+                
+                if (entYearStr == null || entYearStr.equals("0") ||
+                	    classNum == null || classNum.equals("0") ||
+                	    subjectCd == null || subjectCd.equals("0")) {
+
+                	    req.setAttribute("errorMessage", "入学年度・クラス・科目を選択してください");
+
+                	    req.setAttribute("f1", entYearStr);
+                	    req.setAttribute("f2", classNum);
+                	    req.setAttribute("f3", subjectCd);
+
+                	    req.getRequestDispatcher("test_list.jsp").forward(req, res);
+                	    return;
+                	}
+                
+                int entYear = Integer.parseInt(entYearStr);
+                
+                Subject subject = sDao.get(subjectCd, teacher.getSchool());
                 
                 List<Test> tests = tDao.filter(entYear, classNum, subject, 0, teacher.getSchool());
                 

@@ -18,8 +18,8 @@
                         </div>
                         <div class="col-2">
                             <label class="form-label">入学年度</label>
-                            <select class="form-select" name="f1" required>
-                                <option value="">--------</option>
+                            <select class="form-select" name="f1" >
+                                <option value="0">--------</option>
                                 <c:forEach var="year" items="${ent_year_set}">
                                     <option value="${year}">${year}</option>
                                 </c:forEach>
@@ -27,28 +27,37 @@
                         </div>
                         <div class="col-2">
                             <label class="form-label">クラス</label>
-                            <select class="form-select" name="f2" required>
-                                <option value="">--------</option>
+                            <select class="form-select" name="f2" >
+                                <option value="0">--------</option>
                                 <c:forEach var="num" items="${class_num_set}">
                                     <option value="${num}">${num}</option>
                                 </c:forEach>
                             </select>
                         </div>
+                        
                         <div class="col-4">
                             <label class="form-label">科目</label>
-                            <select class="form-select" name="f3" required>
-                                <option value="">--------</option>
+                            <select class="form-select" name="f3" >
+                                <option value="0">--------</option>
                                 <c:forEach var="subject" items="${subject_set}">
                                     <option value="${subject.cd}">${subject.name}</option>
                                 </c:forEach>
                             </select>
+                      
                         </div>
+                        
                         <div class="col-2">
                             <button class="btn btn-secondary w-80" type="submit">検索</button>
                         </div>
                     </div>
                     
-                    <hr class="my-4">
+                    <c:if test="${not empty errorMessage}">
+					    <div class="text-warning mt-2">
+					        ${errorMessage}
+					    </div>
+					</c:if>
+							
+                    <hr class="my-2">
 
 					<div class="row align-items-end">
                 </form>

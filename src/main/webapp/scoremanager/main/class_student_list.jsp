@@ -64,10 +64,10 @@
 			            検索
 			        </button>
 			    </div>
-			
+				
 			</div>
-
-          	
+			
+			
             <!-- エラーメッセージ -->
             <c:if test="${not empty errors}">
                 <div class="text-danger">
@@ -77,13 +77,24 @@
                 </div>
             </c:if>
             </div>
+            <div class="small fw-bold" style="color:#0aa2c0;">
+		      		入学年度を選択またはクラスを入力して検索ボタンをクリックしてください
+			</div>
             </form>
             </div>
+            
+ 
 
             <!-- 学生一覧テーブル -->
             <c:if test="${not empty param.search && empty errors}">
             <div class ="searched">
             <div>
+	            <div class="mx-3">
+				    <p>
+				        入学年度：${f1}　
+				        クラス：${f2}
+				    </p>
+				</div>
                 <table class="table table-hover">
                     <thead>
                         <tr>

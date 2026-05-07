@@ -5,15 +5,17 @@
 
     <c:param name="content">
         <section class="me-4">
-            <h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">成績登録完了</h2>
+            <h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">成績管理</h2>
             
-            <div class="mx-3 mt-4">
-                <p>成績情報の登録が完了しました。</p>
+	            <div class="mx-3 mt-4">
+	                <p class="bg-success bg-opacity-25 p-2 text-center">登録が完了しました。</p>
+	             <div class="mt-6">
                 
-                <div class="mt-4">
-                    <a href="TestRegist.action" class="btn btn-secondary me-2">戻る</a>
-                    <a href="TestList.action" class="btn btn-outline-secondary">成績参照へ</a>
+                <div class="mt-6">
+                    <a href="TestRegist.action" class="mt-3 mx-3">戻る</a>
+                    <a href="TestList.action" class="mt-3 mx-3">成績参照へ</a>
                 </div>
             </div>
         </section>
     </c:param>
+</c:import>

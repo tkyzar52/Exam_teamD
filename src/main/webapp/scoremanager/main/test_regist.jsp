@@ -8,7 +8,7 @@
             <h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">成績管理</h2>
             
             <form action="TestRegist.action" method="get">
-                <div class="row border p-3 mx-1 mb-4 align-items-end">
+                <div class="row border p-3 mx-1 mb-4 align-items-center">
                     <div class="col-2">
                         <label class="form-label">入学年度</label>
                         <select class="form-select" name="f1">
@@ -46,15 +46,21 @@
                         </select>
                     </div>
                     <div class="col-3">
-                        <button class="btn btn-secondary w-100" type="submit">検索</button>
+                        <button class="btn btn-secondary w-90" type="submit">検索</button>
                     </div>
                 </div>
+                
             </form>
 
-            <c:if test="${tests != null}">
+			<c:if test="${tests != null}">
+	            <p class="mb-2">
+				    科目：${subject.name}（${f4}回）
+				</p>
                 <form action="TestRegistExecute.action" method="post">
-                    <input type="hidden" name="subject_cd" value="${f3}">
-                    <input type="hidden" name="test_no" value="${f4}">
+                    <input type="hidden" name="f1" value="${f1}">
+					<input type="hidden" name="f2" value="${f2}">
+					<input type="hidden" name="f3" value="${f3}">
+					<input type="hidden" name="f4" value="${f4}">
                     
                     <table class="table table-hover">
 					    <thead>
@@ -74,16 +80,21 @@
 					                <td>${test.student.no}</td>
 					                <td>${test.student.name}</td>
 					                <td>
-					                    <input type="number" name="point_${test.student.no}" 
-					                           value="${test.point >= 0 ? test.point : ''}" 
-					                           class="form-control" min="0" max="100" style="width: 100px;">
-					                    <input type="hidden" name="student_no_set" value="${test.student.no}">
-					                </td>
+									    <input type="text" name="point_${test.student.no}" 
+									           value="${test.point >= 0 ? test.point : ''}" 
+									           class="form-control" style="width: 100px;">
+									    <c:if test="${not empty errorMap[test.student.no]}">
+									        <div style="color: orange; font-size: 0.85em;">
+									            ${errorMap[test.student.no]}
+									        </div>
+									    </c:if>
+									    <input type="hidden" name="student_no_set" value="${test.student.no}">
+									</td>
 					            </tr>
 					        </c:forEach>
 					    </tbody>
 					</table>
-                    <button class="btn btn-primary mt-3" type="submit">登録して終了</button>
+                    <button class="btn btn-secondary mt-3" type="submit">登録して終了</button>
                 </form>
             </c:if>
         </section>

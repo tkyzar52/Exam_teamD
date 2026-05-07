@@ -20,7 +20,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
-public class TestListAction extends Action {
+public class TestListSubjectExecuteAction extends Action {
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -54,20 +54,7 @@ public class TestListAction extends Action {
                 req.setAttribute("f1", entYearStr);
                 req.setAttribute("f2", classNum);
                 req.setAttribute("f3", subjectCd);
-                
-                if (entYearStr == null || entYearStr.equals("0") ||
-                	    classNum == null || classNum.equals("0") ||
-                	    subjectCd == null || subjectCd.equals("0")) {
-
-                	    req.setAttribute("errorMessage", "入学年度・クラス・科目を選択してください");
-
-                	    req.setAttribute("f1", entYearStr);
-                	    req.setAttribute("f2", classNum);
-                	    req.setAttribute("f3", subjectCd);
-
-                	    req.getRequestDispatcher("test_list.jsp").forward(req, res);
-                	    return;
-                	}
+               
                 
                 int entYear = Integer.parseInt(entYearStr);
                 

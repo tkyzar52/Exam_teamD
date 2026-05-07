@@ -55,6 +55,7 @@ public class TestRegistAction extends Action {
             List<Test> tests = tDao.filter(entYear, classNum, subject, testNo, teacher.getSchool());
             
             req.setAttribute("tests", tests);
+            req.setAttribute("subject", subject);
         }
 
         req.setAttribute("ent_year_set", entYearSet);

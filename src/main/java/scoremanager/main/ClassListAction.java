@@ -27,6 +27,7 @@ public class ClassListAction extends Action {
         String entYearStr = request.getParameter("f1");
         String classNum = request.getParameter("f2");
         String isAttendStr = request.getParameter("f3");
+        String search = request.getParameter("search");
 
         int entYear = 0;
 
@@ -62,27 +63,31 @@ public class ClassListAction extends Action {
         }
 
         List<String> list = cNumDao.filter(teacher.getSchool());
+     // 検索ボタン押した時だけ
+        if (search != null) {
 
-        // 条件分岐
-        if (entYear != 0 && !classNum.equals("0")) {
+            if (entYear == 0) {
+                errors.put("f1", "入学年度を選択してください");
+            }
 
-            students = sDao.filter(teacher.getSchool(), entYear, classNum, isAttend);
+            if (classNum.equals("0")) {
+                errors.put("f2", "クラスを選択してください");
+            }
 
-        } else if (entYear != 0 && classNum.equals("0")) {
+            // エラーなし
+            if (errors.isEmpty()) {
 
-            students = sDao.filter(teacher.getSchool(), entYear, isAttend);
+                students = sDao.filter(
+                        teacher.getSchool(),
+                        entYear,
+                        classNum,
+                        isAttend
+                );
+            }
 
-        } else if (entYear == 0 && classNum.equals("0")) {
-
-            students = sDao.filter(teacher.getSchool(), isAttend);
-
-        } else if (entYear == 0 && !classNum.equals("0")) {
-
-            errors.put("f1", "クラスを指定する場合は入学年度を指定してください");
             request.setAttribute("errors", errors);
-
-            students = sDao.filter(teacher.getSchool(), isAttend);
         }
+        
 
         // JSPへ
         request.setAttribute("f1", entYear);

@@ -16,6 +16,7 @@
             <div class="mb-4 px-2">
                 <form action="ClassList.action" method="get">
                     <input type="hidden" name="f" value="sj">
+                    <input type="hidden" name="search" value="true">
 
                     <div class="border rounded bg-white p-4 mb-4 shadow-sm">
                         <div class="row mb-3 align-items-end">
@@ -69,7 +70,7 @@
           	
             <!-- エラーメッセージ -->
             <c:if test="${not empty errors}">
-                <div class="alert alert-danger">
+                <div class="text-danger">
                     <c:forEach var="e" items="${errors}">
                         <div>${e.value}</div>
                     </c:forEach>
@@ -80,6 +81,8 @@
             </div>
 
             <!-- 学生一覧テーブル -->
+            <c:if test="${not empty param.search && empty errors}">
+            <div class ="searched">
             <div>
                 <table class="table table-hover">
                     <thead>
@@ -115,7 +118,7 @@
                         <!-- データがない場合 -->
                         <c:if test="${empty students}">
                             <tr>
-                                <td colspan="5" class="text-center">
+                                <td colspan="5" class="text-danger text-center">
                                     データがありません
                                 </td>
                             </tr>
@@ -123,6 +126,8 @@
                     </tbody>
                 </table>
             </div>
+            </div>
+            </c:if>
 
         </section>
     </c:param>

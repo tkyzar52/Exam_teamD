@@ -10,7 +10,7 @@
              <div class=""> 
              <div class="mb-4 px-2">
                
-                <form action="TestList.action" method="get">
+                <form action="TestListStudentExecute.action" method="get">
                     <input type="hidden" name="f" value="sj">
                     <div class="border rounded bg-white p-4 mb-4 shadow-sm">
                      <div class="row mb-3 align-items-center">

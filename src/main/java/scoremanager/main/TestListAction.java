@@ -59,7 +59,7 @@ public class TestListAction extends Action {
                 	    classNum == null || classNum.equals("0") ||
                 	    subjectCd == null || subjectCd.equals("0")) {
 
-                	    req.setAttribute("errorMessage", "入学年度・クラス・科目を選択してください");
+                	    req.setAttribute("errorMessage", "入学年度とクラスと科目を選択してください");
 
                 	    req.setAttribute("f1", entYearStr);
                 	    req.setAttribute("f2", classNum);

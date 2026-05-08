@@ -63,6 +63,13 @@ public class StudentDao extends Dao {
 					// TODO: handle exception
 					 throw sqle;
 				}
+				if (connection != null) {
+				        try {
+				            connection.close();
+				        } catch (SQLException sqle) {
+				            throw sqle;
+				        }
+				    }
 			 }
 		}
 		return student;

@@ -12,7 +12,7 @@
 			        <div class="mb-3">
 			            <label class="form-label">科目コード</label>
 			            <input class="form-control" type="text" name="cd"
-			                   value="${cd}" maxlength="3" required>
+			                   value="${cd}" placeholder="科目コードを入力してください" maxlength="3" required>
 			            <c:if test="${not empty errorMessage}">
 			                <div class="form-text" style="color: orange;">${errorMessage}</div>
 			            </c:if>
@@ -21,7 +21,7 @@
 			        <div class="mb-3">
 			            <label class="form-label">科目名</label>
 			            <input class="form-control" type="text" name="name"
-			                   value="${name}" maxlength="20" required>
+			                   value="${name}" placeholder="科目名を入力してください" maxlength="20" required>
 			        </div>
 			
 			        <div class="mt-4">

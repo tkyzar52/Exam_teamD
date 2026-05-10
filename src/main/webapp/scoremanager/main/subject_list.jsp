@@ -25,8 +25,8 @@
                             <td>${subject.cd}</td>
                             <td>${subject.name}</td>
                             <td class="text-end">
-                                <a href="SubjectUpdate.action?cd=${subject.cd}" class="me-2">変更</a>
-                                <a href="SubjectDelete.action?cd=${subject.cd}">削除</a>
+                                <a href="SubjectUpdate.action?cd=${subject.cd}" class="me-5">変更</a>
+                                <a href="SubjectDelete.action?cd=${subject.cd}" class="me-5">削除</a>
                             </td>
                         </tr>
                     </c:forEach>

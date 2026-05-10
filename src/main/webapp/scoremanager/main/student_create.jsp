@@ -17,13 +17,14 @@
                 <div style="max-width: 700px;">
 
                     <!-- 入学年度 -->
-                    <div class="row mb-3 align-items-center">
+                    <div class="">
                         <label for="ent_year" class="col-sm-2 col-form-label">
                             入学年度
                         </label>
+                  
 
                         <div class="col-sm-10">
-                            <select class="form-select" id="ent_year" name="ent_year">
+                            <select class="form-select " id="ent_year" name="ent_year">
                                 <option value="">--------</option>
 
                                 <c:forEach var="year" items="${ent_year_set}">
@@ -34,14 +35,16 @@
                                 </c:forEach>
                             </select>
 
-                            <div class="text-danger small">
-                                ${errors.get("ent_year")}
-                            </div>
+                            <c:if test="${not empty errors.get('ent_year')}">
+							    <div class="form-text" style="color: orange;">
+							        ${errors.get("ent_year")}
+							    </div>
+							</c:if>
                         </div>
                     </div>
 
                     <!-- 学生番号 -->
-                    <div class="row mb-3 align-items-center">
+                    <div class="">
                         <label for="no" class="col-sm-2 col-form-label">
                             学生番号
                         </label>
@@ -54,17 +57,19 @@
                                 name="no"
                                 value="${no}"
                                 placeholder="学生番号を入力してください"
-                                maxlength="10"
+                                maxlength="10" required
                             />
 
-                            <div class="text-danger small">
-                                ${errors.get("no")}
-                            </div>
+                             <c:if test="${not empty errors.get('no')}">
+							    <div class="form-text" style="color: orange;">
+							        ${errors.get("no")}
+							    </div>
+							</c:if>
                         </div>
                     </div>
 
                     <!-- 氏名 -->
-                    <div class="row mb-3 align-items-center">
+                    <div class="">
                         <label for="name" class="col-sm-2 col-form-label">
                             氏名
                         </label>
@@ -77,17 +82,14 @@
                                 name="name"
                                 value="${name}"
                                 placeholder="氏名を入力してください"
-                                maxlength="30"
+                                maxlength="30" required
                             />
 
-                            <div class="text-danger small">
-                                ${errors.get("name")}
-                            </div>
                         </div>
                     </div>
 
                     <!-- クラス -->
-                    <div class="row mb-4 align-items-center">
+                    <div class="mx-auto py-2">
                         <label for="class_num" class="col-sm-2 col-form-label">
                             クラス
                         </label>
@@ -104,14 +106,12 @@
 
                             </select>
 
-                            <div class="text-danger small">
-                                ${errors.get("class_num")}
-                            </div>
+                            
                         </div>
                     </div>
 
                     <!-- ボタン -->
-                    <div class="mb-2">
+                    <div class="mx-auto py-2">
                         <button type="submit" class="btn btn-secondary">
                             登録して終了
                         </button>

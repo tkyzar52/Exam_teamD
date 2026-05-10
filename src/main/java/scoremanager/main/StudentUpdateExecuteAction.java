@@ -57,37 +57,11 @@ public class StudentUpdateExecuteAction extends Action {
 
         }
  
-        if (name == null || name.trim().isEmpty()) {
-
-            errors.put("name", "氏名を入力してください");
-
-        }
-
-        if (entYearStr == null || entYearStr.equals("0")) {
-
-            errors.put("ent_year", "入学年度を選択してください");
-
-        }
-
-        if (classNum == null || classNum.equals("0")) {
-
-            errors.put("class_num", "クラスを選択してください");
-
-        }
- 
         if (!errors.isEmpty()) {
 
             if (student != null) {
 
                 student.setName(name != null ? name : "");
-
-                if (entYearStr != null && !entYearStr.equals("0")) {
-
-                    student.setEntYear(Integer.parseInt(entYearStr));
-
-                }
-
-                if (classNum != null) student.setClassNum(classNum);
 
                 student.setAttend(isAttendStr != null && isAttendStr.equals("1"));
 
@@ -101,9 +75,11 @@ public class StudentUpdateExecuteAction extends Action {
 
             request.setAttribute("ent_year_set", entYearSet);
 
-            request.getRequestDispatcher("student_update.jsp").forward(request, response);
+            request.getRequestDispatcher("student_update.jsp")
+                   .forward(request, response);
 
             return;
+        
 
         }
  
@@ -118,10 +94,15 @@ public class StudentUpdateExecuteAction extends Action {
         student.setSchool(teacher.getSchool());
  
         sDao.save(student);
+        
+        
 
-        response.sendRedirect("StudentList.action");
+        request.getRequestDispatcher("student_update_done.jsp")
+               .forward(request, response);
+
 
     }
+   
 
 }
 

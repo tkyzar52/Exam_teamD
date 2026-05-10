@@ -31,7 +31,7 @@ public class StudentCreateAction extends Action {
 
         List<Integer> entYearSet = new ArrayList<>();
 
-        for (int i = year - 10; i < year + 1; i++) {
+        for (int i = year - 10; i < year + 11; i++) {
 
             entYearSet.add(i);
 

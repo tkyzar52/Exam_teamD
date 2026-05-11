@@ -109,6 +109,11 @@
                             
                         </div>
                     </div>
+                     <div class="mb-4 form-check">
+                        <input class="form-check-input" type="checkbox" id="is_attend" name="is_attend" value="1"
+                               <c:if test="${is_attend == '1'}">checked</c:if> />
+                        <label class="form-check-label" for="is_attend">在学中</label>
+                    </div>
 
                     <!-- ボタン -->
                     <div class="mx-auto py-2">

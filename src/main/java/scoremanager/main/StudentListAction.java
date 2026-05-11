@@ -39,7 +39,7 @@ public class StudentListAction extends Action{
 		entYearStr= request.getParameter("f1");
 		classNum=request.getParameter("f2");
 		isAttendStr=request.getParameter("f3");
-		
+		//在学中チェック
 		if (isAttendStr != null) {
 		    isAttend = true;
 		    request.setAttribute("f3", isAttendStr);

@@ -94,7 +94,11 @@ public class StudentCreateExecuteAction extends Action {
         student.setSchool(teacher.getSchool());
 
         sDao.save(student);
+        
+        request.getRequestDispatcher("student_create_done.jsp")
+        .forward(request, response);
 
-        response.sendRedirect("StudentList.action");
+
+       
     }
 }

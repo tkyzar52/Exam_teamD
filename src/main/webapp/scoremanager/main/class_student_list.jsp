@@ -47,7 +47,7 @@
 			                </option>
 			            </c:forEach>
 			        </select>
-			    </div>
+			    </div> 
 			
 			    <!-- 在学チェック -->
 			    <div class="col-2">
@@ -101,7 +101,7 @@
                             <th>学生番号</th>
                             <th>学生名</th>
                             <th>入学年度</th>
-                            <th>クラス</th>
+                           <!--  <th>クラス</th> -->
                             <th>在籍状態</th>
                         </tr>
                     </thead>
@@ -112,7 +112,7 @@
                                 <td>${student.no}</td>
                                 <td>${student.name}</td>
                                 <td>${student.entYear}</td>
-                                <td>${student.classNum}</td>
+                                <!--  <td>${student.classNum}</td> -->
                                 <td>
                                     <c:choose>
                                         <c:when test="${student.attend}">
@@ -129,7 +129,7 @@
                         <!-- データがない場合 -->
                         <c:if test="${empty students}">
                             <tr>
-                                <td colspan="5" class="text-danger text-center">
+                                <td colspan="4" class="text-danger text-center">
                                     データがありません
                                 </td>
                             </tr>

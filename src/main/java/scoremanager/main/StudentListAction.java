@@ -40,6 +40,10 @@ public class StudentListAction extends Action{
 		classNum=request.getParameter("f2");
 		isAttendStr=request.getParameter("f3");
 		
+		if (isAttendStr != null) {
+		    isAttend = true;
+		    request.setAttribute("f3", isAttendStr);
+		}
 		if(entYearStr !=null) {
 			entYear = Integer.parseInt(entYearStr);
 		}
@@ -77,6 +81,10 @@ public class StudentListAction extends Action{
 			request.setAttribute("f3",isAttendStr);
 		}
 		
+
+		if (entYearStr != null) {
+		    entYear = Integer.parseInt(entYearStr);
+		}
 		request.setAttribute("students", students);
 		
 		request.setAttribute("class_num_set", list);

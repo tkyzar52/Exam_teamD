@@ -16,7 +16,7 @@
                 学生情報変更
             </h2>
 
-            <form method="post" action="StudentUpdateExecute.action">
+            <form method="post" action="StudentUpdateExecute.action" novalidate>
 
                 <div style="max-width: 700px; margin-left: 15px;">
 
@@ -94,7 +94,17 @@
                             name="name"
                             value="${student.name}"
                             maxlength="30"
-                            required />
+                            placeholder="氏名を入力してください" />
+
+                        <!-- エラーメッセージ -->
+                        <div
+                            id="name-error"
+                            class="text-warning small mt-1"
+                            style="display: none;">
+
+                            ⚠ このフィールドを入力してください。
+
+                        </div>
 
                     </div>
 
@@ -183,6 +193,51 @@
                 </div>
 
             </form>
+
+            <!-- JavaScript -->
+            <script>
+
+                const form = document.querySelector("form");
+
+                const nameInput = document.getElementById("name");
+
+                const error = document.getElementById("name-error");
+
+                form.addEventListener("submit", function(e) {
+
+                    if (nameInput.value.trim() === "") {
+
+                        e.preventDefault();
+
+                        nameInput.classList.add("is-invalid");
+
+                        error.style.display = "block";
+
+                        nameInput.focus();
+
+                    } else {
+
+                        nameInput.classList.remove("is-invalid");
+
+                        error.style.display = "none";
+
+                    }
+
+                });
+
+                nameInput.addEventListener("input", function() {
+
+                    if (nameInput.value.trim() !== "") {
+
+                        nameInput.classList.remove("is-invalid");
+
+                        error.style.display = "none";
+
+                    }
+
+                });
+
+            </script>
 
         </section>
 

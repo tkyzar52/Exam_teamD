@@ -48,12 +48,25 @@
                     <div class="col-2 text-center">
                         <button class="btn btn-secondary" id="filter-button">絞込み</button>
                     </div>
-                    <div class="mt-2 text-warning">${errors.get("f1") }</div>
+                    
+                    
+					
                 </div>
               </form>
+              
+              <c:if test="${not empty errors.f1}">
+					    <div class="mt-2 text-warning">${errors.f1}</div>
+			</c:if>
+			<c:if test="${not empty errors.f2}">
+			    <div class="mt-2 text-warning">${errors.f2}</div>
+			</c:if>
  
             <c:choose>
-                <c:when test="${students.size()>0 }">
+            	<%-- ✅ Don't show table if there are errors --%>
+                <c:when test="${not empty errors.f1 or not empty errors.f2}">
+                    <%-- error already shown above, do nothing --%>
+                </c:when>
+                <c:when  test="${not empty students}">
                     <div>検索結果：${students.size() }件</div>
                     <table class="table table-hover">
                         <tr>

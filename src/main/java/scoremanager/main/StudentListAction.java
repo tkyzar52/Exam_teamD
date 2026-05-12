@@ -39,14 +39,41 @@ public class StudentListAction extends Action{
 		entYearStr= request.getParameter("f1");
 		classNum=request.getParameter("f2");
 		isAttendStr=request.getParameter("f3");
-		//在学中チェック
-		if (isAttendStr != null) {
-		    isAttend = true;
-		    request.setAttribute("f3", isAttendStr);
-		}
-		if(entYearStr !=null) {
-			entYear = Integer.parseInt(entYearStr);
-		}
+		
+		
+		// ✅ Null guards
+        if (classNum == null) {
+            classNum = "0";
+        }
+        if (entYearStr == null || entYearStr.isEmpty()) {
+            entYearStr = "0";
+        }
+        entYear = Integer.parseInt(entYearStr);
+
+        // ✅ isAttend must be set BEFORE filtering
+        if (isAttendStr != null) {
+            isAttend = true;
+            request.setAttribute("f3", isAttendStr);
+        }
+
+		
+		  // ✅ Null guard for classNum (null on first page load)
+        if (entYear != 0 && !classNum.equals("0")) {
+            students = sDao.filter(teacher.getSchool(), entYear, classNum, isAttend);
+
+        } else if (entYear != 0 && classNum.equals("0")) {
+            errors.put("f2", "入学年度を指定する場合はクラスを指定してください");
+            students = sDao.filter(teacher.getSchool(), entYear, isAttend);
+
+        } else if (entYear == 0 && classNum.equals("0")) {
+            students = sDao.filter(teacher.getSchool(), isAttend);
+
+        } else {
+            errors.put("f1", "クラスを指定する場合は入学年度を指定してください");
+            students = sDao.filter(teacher.getSchool(), isAttend);
+        }
+        
+		
 		
 		List<Integer> entYearSet = new ArrayList<>();
 		
@@ -56,30 +83,30 @@ public class StudentListAction extends Action{
 		
 		
 		List<String> list = cNumDao.filter(teacher.getSchool());
-		if(entYear != 0 && !classNum.equals("0")) {
-			students = sDao.filter(teacher.getSchool(),entYear,classNum ,isAttend);
-			
+		if (entYear != 0 && !classNum.equals("0")) {
+		    // Both year and class selected
+		    students = sDao.filter(teacher.getSchool(), entYear, classNum, isAttend);
+
 		} else if (entYear != 0 && classNum.equals("0")) {
-			students = sDao.filter(teacher.getSchool(), entYear, isAttend);
-			
-		} else if (entYear == 0 && classNum == null || entYear == 0 && classNum.equals("0")) {
-			students = sDao.filter(teacher.getSchool(), isAttend);
-			
+		    // Only year selected
+		    students = sDao.filter(teacher.getSchool(), entYear, isAttend);
+
+		} else if (entYear == 0 && classNum.equals("0")) {
+		    // Neither selected
+		    students = sDao.filter(teacher.getSchool(), isAttend);
+
 		} else {
-			errors.put("f1", "クラスを指定する場合は入学年度を指定してください");
-			request.setAttribute("errors", errors);
-			students = sDao.filter(teacher.getSchool(),isAttend);
-			
+		    // Class selected without year → error
+		    errors.put("f1", "クラスを指定する場合は入学年度を指定してください");
+		    request.setAttribute("errors", errors);
+		    students = sDao.filter(teacher.getSchool(), isAttend);
 		}
 		
+		request.setAttribute("errors", errors);
 		request.setAttribute("f1",entYear );
-		
 		request.setAttribute("f2", classNum);
 		
-		if (isAttendStr != null) {
-			isAttend = true;
-			request.setAttribute("f3",isAttendStr);
-		}
+		
 		
 
 		if (entYearStr != null) {

@@ -10,10 +10,11 @@
 	            <div class="mx-3 mt-4">
 	                <p class="bg-success bg-opacity-25 p-2 text-center">登録が完了しました。</p>
 	             <div class="mt-6">
-                
+                <br>
+                <br>
                 <div class="mt-6">
                     <a href="TestRegist.action" class="mt-3 mx-3">戻る</a>
-                    <a href="TestList.action" class="mt-3 mx-3">成績参照へ</a>
+                    <a href="TestList.action" class="mt-3 mx-3">成績参照</a>
                 </div>
             </div>
         </section>

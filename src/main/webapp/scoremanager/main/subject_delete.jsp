@@ -11,25 +11,17 @@
               <input type="hidden" name="cd" value="${subject.cd}">
                 <div class="mx-3">
                     <p>
-    						${subject.name}（${subject.cd}）を削除します。よろしいですか？
+    						${subject.name}（${subject.cd}）を削除してもよろしいですか
 					</p>
                     
-                   <%--  <div class="mb-3">
-                        <label class="form-label">科目コード</label>
-                        <input class="form-control-plaintext border-bottom" type="text" name="cd" value="${subject.cd}" readonly>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">科目名</label>
-                        <input class="form-control-plaintext border-bottom" type="text" value="${subject.name}" readonly>
-                    </div>--%>
+                  
 
                     <div class="mt-4">
                         <button class="btn btn-danger" type="submit">削除</button>
                     </div>
                 </div>
             </form>
-
+			<br class = "mt-5">
             <div class="mt-3 mx-3">
                 <a href="SubjectList.action">戻る</a>
             </div>

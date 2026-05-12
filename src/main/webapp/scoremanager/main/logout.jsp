@@ -9,9 +9,10 @@
 
 	<c:param name="content">
 		<div id="wrap_box">
-			<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2">ログアウト</h2>
+			<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">ログアウト</h2>
 			<div id="wrap_box">
 				<p class="text-center" style="background-color:#66CC99">ログアウトしました</p>
+				<br class = mt-5>
 				<a href="../Login.action">ログイン</a>
 			</div>
 		</div>

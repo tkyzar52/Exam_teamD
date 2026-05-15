@@ -45,7 +45,7 @@
                             <select class="form-select" name="f3" required>
                                 <option value="">--------</option>
                                 <c:forEach var="subject" items="${subject_set}">
-                                    <option value="${subject.cd}" <c:if test="${subject.cd == f3}">selected</c:if>>
+                                    <option value="${subject.cd}" <c:if test="${subject.cd == f3}">selected</c:if>>	
 									    ${subject.name}
 									</option>
                                 </c:forEach>
@@ -83,6 +83,8 @@
                 </form>
             </div>
             </div>
+            
+            <%--科目別成績一覧 --%>
             
             <c:if test="${not empty student_map}">
 			    <table class="table table-hover">

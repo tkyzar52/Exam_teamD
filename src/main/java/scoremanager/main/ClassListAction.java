@@ -66,14 +66,9 @@ public class ClassListAction extends Action {
      // 検索ボタン押した時だけ
         if (search != null) {
 
-            if (entYear == 0) {
-                errors.put("f1", "入学年度を選択してください");
-            }
-
-            if (classNum.equals("0")) {
-                errors.put("f2", "クラスを選択してください");
-            }
-
+        	if (entYear == 0 || classNum == null || classNum.isEmpty() || classNum.equals("0")) {
+        	    errors.put("f1", "入学年度またはクラスを選択してください");
+        	}
             // エラーなし
             if (errors.isEmpty()) {
 

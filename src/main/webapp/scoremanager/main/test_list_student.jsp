@@ -84,7 +84,7 @@
             </div>
             </div>
             
-     
+     		<%--学生別成績一覧 --%>
             <div class="mb-3">
 			    <c:if test="${not empty student}">
 			        <p>氏名: ${student.name} (${student.no})</p>
@@ -113,7 +113,7 @@
 			        </tbody>
 			    </table>
 			</c:if>
-			
+			<%--情報ない場合 --%>
 			<c:if test="${empty tests && not empty param.f4}">
 			    <div class="text">
 			        成績情報が存在しませんでした

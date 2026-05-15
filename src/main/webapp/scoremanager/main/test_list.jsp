@@ -5,6 +5,7 @@
 
     <c:param name="content">
         <section class="me-4">
+        <%-- 見出し --%>
             <h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">成績参照</h2>
             
             <div class="mb-4 px-2">
@@ -13,6 +14,8 @@
                     <input type="hidden" name="f" value="sj">
                     <div class="border rounded bg-white p-4 mb-4 shadow-sm">
                      <div class="row mb-3 align-items-center">
+                     
+                     <%--科目情報で検索--%>
                         <div class="col-md-2">
                         	<label class="form-label">科目情報</label>
                         </div>
@@ -50,7 +53,7 @@
                             <button class="btn btn-secondary w-80" type="submit">検索</button>
                         </div>
                     </div>
-                    
+                    <%--errorメッセージ --%>
                     <c:if test="${not empty errorMessage}">
 					    <div class="text-warning mt-2">
 					        ${errorMessage}
@@ -67,6 +70,7 @@
                 
                 <form action="TestList.action" method="get">
                     <input type="hidden" name="f" value="st"> 
+                    <%-- 学生番号で検索 --%>
                     <div class="row align-items-center">
                     	<div class="col-md-2">
                         	<label class="form-label">学生情報</label>

@@ -2,13 +2,14 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <c:import url="/common/base.jsp">
     <c:param name="title">得点管理システム</c:param>
-
+	<%--メイン --%>
     <c:param name="content">
         <section class="me-4">
             <h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">成績管理</h2>
             
             <form action="TestRegist.action" method="get">
                 <div class="row border p-3 mx-1 mb-4 align-items-center">
+                <%--入学年度 --%>
                     <div class="col-2">
                         <label class="form-label">入学年度</label>
                         <select class="form-select" name="f1">
@@ -18,6 +19,7 @@
                             </c:forEach>
                         </select>
                     </div>
+                    <%--クラス --%>
                     <div class="col-2">
                         <label class="form-label">クラス</label>
                         <select class="form-select" name="f2">
@@ -27,6 +29,7 @@
                             </c:forEach>
                         </select>
                     </div>
+                    <%--科目 --%>
                     <div class="col-3">
                         <label class="form-label">科目</label>
                         <select class="form-select" name="f3">
@@ -36,6 +39,7 @@
                             </c:forEach>
                         </select>
                     </div>
+                    <%--回数 --%>
                     <div class="col-2">
                         <label class="form-label">回数</label>
                         <select class="form-select" name="f4">
@@ -48,9 +52,19 @@
                     <div class="col-3">
                         <button class="btn btn-secondary w-90" type="submit">検索</button>
                     </div>
+                    
+                  
                 </div>
+                <div class="mt-3">
+                    <c:if test="${not empty errorMap['select']}">
+					    <div style="color: orange; font-size: 0.85em;">
+					        ${errorMap['select']}
+					    </div>
+					</c:if>
+					</div>
                 
             </form>
+           
 
 			<c:if test="${tests != null}">
 	            <p class="mb-2">
@@ -61,7 +75,7 @@
 					<input type="hidden" name="f2" value="${f2}">
 					<input type="hidden" name="f3" value="${f3}">
 					<input type="hidden" name="f4" value="${f4}">
-                    
+                    <%-- テーブルで情報出す --%>
                     <table class="table table-hover">
 					    <thead>
 					        <tr>

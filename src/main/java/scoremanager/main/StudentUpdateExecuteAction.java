@@ -55,38 +55,7 @@ public class StudentUpdateExecuteAction extends Action {
 
         }
 
-        // 氏名チェック
-        if (name == null || name.trim().isEmpty()) {
-
-            errors.put("name", "氏名を入力してください");
-
-        }
-
-        // エラー時
-        if (!errors.isEmpty()) {
-
-            if (student != null) {
-
-                student.setName(name != null ? name : "");
-
-                student.setAttend(isAttendStr != null);
-
-            }
-
-            request.setAttribute("errors", errors);
-
-            request.setAttribute("student", student);
-
-            request.setAttribute("class_num_set", classNumSet);
-
-            request.setAttribute("ent_year_set", entYearSet);
-
-            request.getRequestDispatcher("student_update.jsp")
-                   .forward(request, response);
-
-            return;
-
-        }
+     
 
         // 更新処理
         student.setName(name.trim());

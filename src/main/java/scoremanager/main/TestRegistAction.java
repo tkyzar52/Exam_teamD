@@ -2,7 +2,9 @@ package scoremanager.main;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import bean.Subject;
 import bean.Teacher;
@@ -26,7 +28,22 @@ public class TestRegistAction extends Action {
         String classNum = req.getParameter("f2");
         String subjectCd = req.getParameter("f3");
         String testNoStr = req.getParameter("f4");
+        
+        Map<String, String> errorMap = new HashMap<>();
+     
+        if (entYearStr != null || classNum != null || subjectCd != null || testNoStr != null) {
 
+            if (entYearStr == null || entYearStr.equals("0") ||
+                classNum == null || classNum.equals("0") ||
+                subjectCd == null || subjectCd.equals("0") ||
+                testNoStr == null || testNoStr.equals("0")) {
+
+                errorMap.put("select", "入学年度とクラスと科目と回数を選択してください");
+            }
+        }
+
+        req.setAttribute("errorMap", errorMap);
+        
         LocalDate todaysDate = LocalDate.now();
         int year = todaysDate.getYear();
         List<Integer> entYearSet = new ArrayList<>();

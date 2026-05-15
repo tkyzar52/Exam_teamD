@@ -70,7 +70,7 @@
 			
             <!-- エラーメッセージ -->
             <c:if test="${not empty errors}">
-                <div class="text-danger">
+                <div style="color: orange; font-size: 0.85em;">
                     <c:forEach var="e" items="${errors}">
                         <div>${e.value}</div>
                     </c:forEach>
@@ -100,8 +100,8 @@
                         <tr>
                             <th>学生番号</th>
                             <th>学生名</th>
-                            <th>入学年度</th>
-                           <!--  <th>クラス</th> -->
+                           <%-- <th>入学年度</th>
+                             <th>クラス</th> --%>
                             <th>在籍状態</th>
                         </tr>
                     </thead>
@@ -111,7 +111,7 @@
                             <tr>
                                 <td>${student.no}</td>
                                 <td>${student.name}</td>
-                                <td>${student.entYear}</td>
+                                <!-- <td>${student.entYear}</td>-->
                                 <!--  <td>${student.classNum}</td> -->
                                 <td>
                                     <c:choose>

@@ -53,22 +53,18 @@
 					
                 </div>
               </form>
-              
+              <%-- エラーメッセージ --%>
               <c:if test="${not empty errors.f1}">
-					    <div class="mt-2 text-warning">${errors.f1}</div>
-			</c:if>
-			<c:if test="${not empty errors.f2}">
-			    <div class="mt-2 text-warning">${errors.f2}</div>
+			    <div class="mt-2 text-warning">
+			        ${errors.f1}
+			    </div>
 			</c:if>
  
             <c:choose>
             	
-                <c:when test="${not empty errors.f1 or not empty errors.f2}">
-                    
-                </c:when>
                 <c:when  test="${not empty students}">
                     <div>検索結果：${students.size() }件</div>
-                    <table class="table table-hover">
+                    <table class="table table-hover"
                         <tr>
                             <th>入学年度</th>
                             <th>学生番号</th>

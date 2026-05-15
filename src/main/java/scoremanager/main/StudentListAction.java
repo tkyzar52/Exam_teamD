@@ -43,37 +43,50 @@ public class StudentListAction extends Action{
 		
 		
 		
-        if (classNum == null) {
-            classNum = "0";
-        }
-        if (entYearStr == null || entYearStr.isEmpty()) {
-            entYearStr = "0";
-        }
-        entYear = Integer.parseInt(entYearStr);
+		// class 未選択のとき
+		if (classNum == null || classNum.isEmpty()) {
+		    classNum = "0";
+		}
 
-        
-        if (isAttendStr != null) {
-            isAttend = true;
-            request.setAttribute("f3", isAttendStr);
-        }
+		// entYear 未選択のとき
+		if (entYearStr == null || entYearStr.isEmpty()) {
+		    entYear = 0;
+		} else {
+		    entYear = Integer.parseInt(entYearStr);
+		}
 
-		
-		  
-        if (entYear != 0 && !classNum.equals("0")) {
-            students = sDao.filter(teacher.getSchool(), entYear, classNum, isAttend);
+		// 在学中チェック
+		if (isAttendStr != null) {
+		    isAttend = true;
+		    request.setAttribute("f3", isAttendStr);
+		}
 
-        } else if (entYear != 0 && classNum.equals("0")) {
-            errors.put("f2", "入学年度を指定する場合はクラスを指定してください");
-            students = sDao.filter(teacher.getSchool(), entYear, isAttend);
 
-        } else if (entYear == 0 && classNum.equals("0")) {
-            students = sDao.filter(teacher.getSchool(), isAttend);
+		// classだけ選択 → エラー
+		if (entYear == 0 && !classNum.equals("0")) {
 
-        } else {
-            errors.put("f1", "クラスを指定する場合は入学年度を指定してください");
-            students = sDao.filter(teacher.getSchool(), isAttend);
-        }
-        
+		    errors.put("f1", "クラスを指定する場合は入学年度を指定してください");
+
+		    // エラー時も全件表示
+		    students = sDao.filter(teacher.getSchool(),isAttend
+		    
+		   );
+
+		// 入学年度 + クラス
+		} else if (entYear != 0 && !classNum.equals("0")) {
+
+		    students = sDao.filter(teacher.getSchool(),entYear,classNum,isAttend);
+
+		// 入学年度のみ
+		} else if (entYear != 0 && classNum.equals("0")) {
+
+		    students = sDao.filter(teacher.getSchool(),entYear,isAttend);
+
+		// 両方未選択ときの表示
+		} else {
+
+		    students = sDao.filter(teacher.getSchool(),isAttend);
+		}
 		
 		
 		List<Integer> entYearSet = new ArrayList<>();

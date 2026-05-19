@@ -11,6 +11,15 @@
             <h2 class="h3 mb-4 fw-bold bg-secondary bg-opacity-10 py-2 px-3">
                 学生情報登録
             </h2>
+            
+             <div class="my-2 text-end px-4">
+			    <a href="StudentCsvCreate.action"
+			       >
+			
+			        CSV一括登録
+			
+			    </a>
+			</div>
 
             <form method="post" action="StudentCreateExecute.action">
 

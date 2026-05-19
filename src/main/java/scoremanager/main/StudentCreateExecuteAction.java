@@ -82,7 +82,7 @@ public class StudentCreateExecuteAction extends Action {
 
             return;
         }
-        //commit
+        
         // 保存処理
         Student student = new Student();
 
